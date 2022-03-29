@@ -1,3 +1,4 @@
+import java.security.PublicKey;
 import java.util.Objects;
 
 public class Komplex {
@@ -24,10 +25,10 @@ public class Komplex {
         return add;
     }
 
-    public Komplex multiply(Komplex multiply) {
-        multiply.a = a * multiply.a - b * multiply.b;
-        multiply.b = b * multiply.a + multiply.b * a;
-        return multiply;
+    public Komplex multiply(Komplex multiply ) {
+
+        return new Komplex(a * multiply.a - b * multiply.b , b * multiply.a + multiply.b * a);
+
     }
 
     @Override
@@ -41,5 +42,10 @@ public class Komplex {
     @Override
     public int hashCode() {
         return Objects.hash(a, b);
+    }
+
+    public double arg() {
+
+        return Math.atan(b/a);
     }
 }
